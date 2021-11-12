@@ -13,15 +13,24 @@ endif
 ##	build:			Build or rebuild hermes services
 .PHONY : build
 build:
-	$(MAKE) .checkdeps
 	@docker-compose -f stack/services.yaml build
 
  ## 	up:			Build and UP de environment
 .PHONY : up
 up:
-	@docker-compose -f stack/services.yaml up
+	@docker-compose -f stack/services.yaml up -d --build
 
 ## 	down:			Brings the environment down
  .PHONY : down
  down:
 	@docker-compose -f stack/services.yaml down
+
+## 	buildMongo:		Build mongo environment
+ .PHONY : buildMongo
+ buildMongo:
+	sbt "project odds_checker; runMain com.mikelalvarezgo.quinielator.odds_checker.infrastructure.mongo.MongoEnvironmentBuilder;"
+
+## 	dropMongo:		Drop mongo environment
+ .PHONY : buildMongo
+ dropMongo:
+	sbt "project odds_checker; runMain com.mikelalvarezgo.quinielator.odds_checker.infrastructure.mongo.MongoEnvironmentDropper;"

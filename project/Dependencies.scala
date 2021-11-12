@@ -2,6 +2,7 @@ import sbt._
 
 object Dependencies {
   object Version {
+    val akka            = "2.6.17"
     val akkaHttp        = "10.2.7"
     val catsCore        = "2.6.1"
     val circe           = "0.14.1"
@@ -18,7 +19,9 @@ object Dependencies {
   }
 
   object General {
-     val circeExtras       = circe("circe-generic-extras")
+    val akkaSlf4j       = "com.typesafe.akka"    %% "akka-slf4j"              % Version.akka
+
+    val circeExtras       = circe("circe-generic-extras")
     val circeGeneric      = circe("circe-generic")
     val circeParser       = circe("circe-parser")
     val circeLiteral      = circe("circe-literal")
@@ -46,6 +49,8 @@ object Dependencies {
   }
 
   val commonDependencies = Seq(
+    General.akkaSlf4j,
+    General.akkaHttp,
     General.cats,
     General.circeExtras,
     General.circeGeneric,
