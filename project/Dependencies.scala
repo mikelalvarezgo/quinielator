@@ -34,7 +34,7 @@ object Dependencies {
     val kamonBundle        = kamon("kamon-bundle")
     val kamonSystemMetrics = kamon("kamon-system-metrics")
 
-    val mongo-driver = "org.mongodb.scala" %% "mongo-scala-driver" % Version.mongo
+    val mongoDriver = "org.mongodb.scala" %% "mongo-scala-driver" % Version.mongo
     // Logs
     val scalaLogging    = "com.typesafe.scala-logging" %% "scala-logging"            % Version.scalaLogging
 
@@ -52,7 +52,7 @@ object Dependencies {
     General.circeLiteral,
     General.kamonBundle,
     General.kamonSystemMetrics,
-    General.mongo,
+    General.mongoDriver,
     General.typeSafe,
     General.scalaLogging,
     General.joda,
