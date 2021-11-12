@@ -7,7 +7,7 @@ import com.mikelalvarezgo.quinielator.shared.domain.error.Validation.Validation
 
 sealed abstract class Division(val value: String)
 
-object Division{
+object Division {
 
   private lazy val allByValue: Map[String, Division] = all.map(ts => ts.value -> ts).toMap
 

@@ -6,7 +6,7 @@ import org.slf4j.event.Level
 import com.mikelalvarezgo.quinielator.shared.domain.error.Validation.Validation
 
 final case class ValidationErrorException(validationErrors: NonEmptyList[ValidationError], id: Option[String])
-  extends Exception {
+    extends Exception {
   def level: Level                = Level.ERROR
   override def getMessage: String = (List(message) ++ fields.map { case (k, v) => s"$k=$v" }).mkString(", ")
   def message: String             = "Validation went wrong"
