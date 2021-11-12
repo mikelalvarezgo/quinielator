@@ -1,4 +1,4 @@
-package com.mikelalvarezgo.quinielator.odds_checker.league_day.domain.contract
+package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.contract
 
 import cats.data.OptionT
 import com.mikelalvarezgo.quinielator.shared.domain.model.{LeagueDay, LeagueDayId}

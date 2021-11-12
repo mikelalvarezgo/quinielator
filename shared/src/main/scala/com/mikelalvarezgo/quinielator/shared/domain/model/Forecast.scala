@@ -8,7 +8,7 @@ import com.mikelalvarezgo.quinielator.shared.domain.error.{InvalidForecast, Vali
 
 sealed abstract class Forecast(val value: String)
 
-object Forecast{
+object Forecast {
 
   private lazy val allByValue: Map[String, Forecast] = all.map(ts => ts.value -> ts).toMap
 
@@ -21,6 +21,6 @@ object Forecast{
 
 }
 
-final case object HomeWin extends Forecast("1")
+final case object HomeWin    extends Forecast("1")
 final case object VisitorWin extends Forecast("2")
-final case object Tie extends Forecast("X")
+final case object Tie        extends Forecast("X")
