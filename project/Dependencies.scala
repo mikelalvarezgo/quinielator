@@ -2,8 +2,10 @@ import sbt._
 
 object Dependencies {
   object Version {
-    val akka            = "2.6.17"
+    val akka            = "2.6.18"
     val akkaHttp        = "10.2.7"
+    val akkaHttpCirce   = "1.37.0"
+    val akkaHttpCors    = "1.1.2"
     val catsCore        = "2.6.1"
     val circe           = "0.14.1"
     val joda            = "2.10.13"
@@ -19,14 +21,18 @@ object Dependencies {
   }
 
   object General {
-    val akkaSlf4j       = "com.typesafe.akka"    %% "akka-slf4j"              % Version.akka
 
     val circeExtras       = circe("circe-generic-extras")
     val circeGeneric      = circe("circe-generic")
     val circeParser       = circe("circe-parser")
     val circeLiteral      = circe("circe-literal")
 
+    val akkaActor = "com.typesafe.akka" %% "akka-actor"             % Version.akka
+    val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j"             % Version.akka
+    val akkaStream = "com.typesafe.akka" %% "akka-stream"             % Version.akka
     val akkaHttp          = "com.typesafe.akka" %% "akka-http"             % Version.akkaHttp
+    val akkaHttpCirce     = "de.heikoseeberger" %% "akka-http-circe"       % Version.akkaHttpCirce
+    val akkaHttpCors      = "ch.megard"         %% "akka-http-cors"        % Version.akkaHttpCors
     val cats              = "org.typelevel"     %% "cats-core"             % Version.catsCore
     val typeSafe          = "com.typesafe"       % "config"                % Version.typeSafe
 
@@ -49,8 +55,12 @@ object Dependencies {
   }
 
   val commonDependencies = Seq(
+    General.akkaActor,
+    General.akkaStream,
     General.akkaSlf4j,
     General.akkaHttp,
+    General.akkaHttpCirce,
+    General.akkaHttpCors,
     General.cats,
     General.circeExtras,
     General.circeGeneric,

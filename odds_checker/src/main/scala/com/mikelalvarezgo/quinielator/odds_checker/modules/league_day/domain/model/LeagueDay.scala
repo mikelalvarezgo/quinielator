@@ -4,7 +4,4 @@ import com.mikelalvarezgo.quinielator.shared.domain.model.{Game, LeagueDayId}
 
 import org.joda.time.DateTime
 
-final case class LeagueDay(leagueDayId: LeagueDayId,
-                           beginDate: DateTime,
-                           endDate: DateTime,
-                           games: Seq[Game])
+final case class LeagueDay(leagueDayId: LeagueDayId, beginDate: DateTime, endDate: DateTime, games: Seq[Game])
