@@ -3,11 +3,11 @@ package com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_
 import akka.actor.ActorSystem
 import akka.http.javadsl.model.StatusCodes
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpRequest, MediaTypes, Uri}
 import akka.http.scaladsl.model.headers.RawHeader
+import akka.http.scaladsl.model._
 import akka.http.scaladsl.unmarshalling.Unmarshal
-import cats.implicits._
 import cats.data.OptionT
+import cats.implicits._
 import com.mikelalvarezgo.quinielator.odds_checker.domain.OddsClient
 import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_api.marshaller.FootballApiMarshaller._
 import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_api.request.FetchLeagueRequest
@@ -18,7 +18,6 @@ import io.circe.generic.extras.auto._
 import io.circe.syntax.EncoderOps
 
 import java.rmi.UnexpectedException
-import java.time.Year
 import scala.concurrent.{ExecutionContext, Future}
 
 final class FootballApiClient(config: FootballApiConfig)(implicit ec: ExecutionContext, system: ActorSystem)
@@ -28,11 +27,11 @@ final class FootballApiClient(config: FootballApiConfig)(implicit ec: ExecutionC
     RawHeader("x-rapidapi-key", config.apiKey)
   )
   implicit val marshallerConfig: Configuration = Configuration.default.withSnakeCaseMemberNames
-  override def fetchLeagueDay(round: Int, year: Year): OptionT[Future, LeagueDayResponse] = {
+  override def fetchLeagueDay(round: Int, year: Int): OptionT[Future, LeagueDayResponse] = {
     val params = FetchLeagueRequest(
       round,
       config.firstDivisionId,
-      year.getValue
+      year
     )
     val entity = HttpEntity(MediaTypes.`application/json`, params.asJson.spaces2)
     val request = HttpRequest(uri = Uri(s"${config.baseUri}/fixtures"))
