@@ -13,6 +13,7 @@ object Dependencies {
     val kamonHttp4s     = "2.2.1"
     val mockito         = "1.16.46"
     val mongo = "4.3.4"
+    val reactiveMongo = "1.0.3"
     val scalaLogging    = "3.9.4"
     val typeSafe    = "1.4.1"
     val scalaTest       = "3.2.10"

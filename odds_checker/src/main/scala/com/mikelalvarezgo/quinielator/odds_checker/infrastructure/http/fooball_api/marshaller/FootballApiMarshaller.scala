@@ -1,7 +1,8 @@
 package com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_api.marshaller
 
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model.{GameResponse, LeagueDayResponse}
 import io.circe.{ACursor, Decoder}
+
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.api.{GameResponse, LeagueDayResponse}
 
 object FootballApiMarshaller {
   private val responsePath: ACursor => ACursor = _.downField("response")
@@ -15,9 +16,10 @@ object FootballApiMarshaller {
     for {
       homeTeam      <- hCursor.downField("teams.home.name").as[String]
       visitorTeam   <- hCursor.downField("teams.away.name").as[String]
+      date          <- hCursor.downField("fixture.date").as[Long]
       goalsHomeTeam <- hCursor.downField("goals.home").as[Int]
       goalsAwayTeam <- hCursor.downField("goals.away").as[Int]
       division      <- hCursor.downField("league.name").as[String]
-    } yield GameResponse(homeTeam, visitorTeam, goalsHomeTeam, goalsAwayTeam, division)
+    } yield GameResponse(homeTeam, visitorTeam, date, goalsHomeTeam, goalsAwayTeam, division)
   )
 }

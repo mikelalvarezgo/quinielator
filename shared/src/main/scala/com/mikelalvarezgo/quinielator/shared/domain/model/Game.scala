@@ -7,7 +7,7 @@ final case class Game(
   visitorTeam: String,
   goalsHomeTeam: Int,
   goalsVisitorTeam: Int,
-  date: DateTime,
+  playedAt: DateTime,
   division: Division
 ) {
   def isHomeVictory    = goalsHomeTeam > goalsVisitorTeam

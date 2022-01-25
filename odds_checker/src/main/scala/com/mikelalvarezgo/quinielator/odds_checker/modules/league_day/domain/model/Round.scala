@@ -7,10 +7,10 @@ import com.mikelalvarezgo.quinielator.shared.domain.error.ValidationErrorExcepti
 
 case class Round(value: Int)
 
-object Round{
+object Round {
   private def isValid: Int => Boolean = value => value > 0 && value < 41
-  def unsafe(value: Int): Round = ValidationErrorException.getOrThrow(fromInt(value))
+  def unsafe(value: Int): Round       = ValidationErrorException.getOrThrow(fromInt(value))
 
   def fromInt(value: Int): Validation[Round] =
-    if(isValid(value)) Valid(Round(value)) else (Invalid(InvalidRound(value)).toValidatedNel)
+    if (isValid(value)) Valid(Round(value)) else (Invalid(InvalidRound(value)).toValidatedNel)
 }

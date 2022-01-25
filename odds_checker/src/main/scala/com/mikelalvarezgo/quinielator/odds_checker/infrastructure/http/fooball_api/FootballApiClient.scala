@@ -11,7 +11,7 @@ import cats.implicits._
 import com.mikelalvarezgo.quinielator.odds_checker.domain.OddsClient
 import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_api.marshaller.FootballApiMarshaller._
 import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_api.request.FetchLeagueRequest
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model.LeagueDayResponse
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.api.LeagueDayResponse
 import de.heikoseeberger.akkahttpcirce.ErrorAccumulatingCirceSupport._
 import io.circe.generic.extras.Configuration
 import io.circe.generic.extras.auto._
