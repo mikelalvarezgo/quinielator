@@ -2,12 +2,12 @@ package com.mikelalvarezgo.quinielator.shared.infrastructure.persistence.mongo
 
 import com.mikelalvarezgo.quinielator.shared.domain.model.Id
 import org.joda.time.DateTime
-import org.mongodb.scala.bson.{BsonInt32, _}
+import org.mongodb.scala.bson.{BsonInt32, BsonString, _}
 
 trait MongoMapping {
 
   implicit class IdConverter(value: Id) {
-    def toBsonObjectId: BsonObjectId = BsonObjectId(value.raw)
+    def toBsonString: BsonString = BsonString(value.raw)
   }
 
   implicit class StringConverter(value: String) {

@@ -12,5 +12,6 @@ object Round {
   def unsafe(value: Int): Round       = ValidationErrorException.getOrThrow(fromInt(value))
 
   def fromInt(value: Int): Validation[Round] =
-    if (isValid(value)) Valid(Round(value)) else (Invalid(InvalidRound(value)).toValidatedNel)
+    if (isValid(value)) Valid(Round(value))
+    else (Invalid(InvalidRound(value)).toValidatedNel)
 }

@@ -9,7 +9,10 @@ import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastruc
 import com.mikelalvarezgo.quinielator.shared.domain.model.LeagueDayId
 import com.mikelalvarezgo.quinielator.shared.infrastructure.utils.SyntaxUtils._
 
-final class LeagueDayGetter[P[_]: Monad](repository: LeagueDayRepository[P], client: OddsClient[P]) {
+final class LeagueDayGetter[P[_]: Monad](
+  repository: LeagueDayRepository[P],
+  client: OddsClient[P]
+) {
   def execute(round: Round, year: Int): P[Unit] =
     client
       .fetchLeagueDay(round.value, year)

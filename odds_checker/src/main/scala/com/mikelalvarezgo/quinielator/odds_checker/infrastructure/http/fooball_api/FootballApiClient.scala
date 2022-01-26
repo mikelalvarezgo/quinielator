@@ -20,14 +20,20 @@ import io.circe.syntax.EncoderOps
 import java.rmi.UnexpectedException
 import scala.concurrent.{ExecutionContext, Future}
 
-final class FootballApiClient(config: FootballApiConfig)(implicit ec: ExecutionContext, system: ActorSystem)
-    extends OddsClient[Future] {
+final class FootballApiClient(config: FootballApiConfig)(
+  implicit ec: ExecutionContext,
+  system: ActorSystem
+) extends OddsClient[Future] {
   private val headers = Seq(
     RawHeader("x-rapidapi-host", config.baseUri),
     RawHeader("x-rapidapi-key", config.apiKey)
   )
-  implicit val marshallerConfig: Configuration = Configuration.default.withSnakeCaseMemberNames
-  override def fetchLeagueDay(round: Int, year: Int): OptionT[Future, LeagueDayResponse] = {
+  implicit val marshallerConfig: Configuration =
+    Configuration.default.withSnakeCaseMemberNames
+  override def fetchLeagueDay(
+    round: Int,
+    year: Int
+  ): OptionT[Future, LeagueDayResponse] = {
     val params = FetchLeagueRequest(
       round,
       config.firstDivisionId,

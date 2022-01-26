@@ -13,10 +13,14 @@ object Division {
 
   def all: Set[Division] = sealerate.values[Division]
 
-  def unsafe(value: String): Division = ValidationErrorException.getOrThrow(fromString(value))
+  def unsafe(value: String): Division =
+    ValidationErrorException.getOrThrow(fromString(value))
 
   def fromString(value: String): Validation[Division] =
-    allByValue.get(value).map(Valid.apply).getOrElse(Invalid(InvalidDivision(value)).toValidatedNel)
+    allByValue
+      .get(value)
+      .map(Valid.apply)
+      .getOrElse(Invalid(InvalidDivision(value)).toValidatedNel)
 
 }
 

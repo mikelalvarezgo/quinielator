@@ -11,7 +11,7 @@ import org.mongodb.scala.model.Filters
 trait MongoLeagueDayMapping extends MongoMapping {
 
   implicit class leagueDayIdConverter(leagueDayId: LeagueDayId) {
-    def toFilter: Bson = Filters.eq("_id", leagueDayId.toBsonObjectId)
+    def toFilter: Bson = Filters.eq("_id", leagueDayId.toBsonString)
   }
 
   implicit class gameConverter(value: Game) {
@@ -27,10 +27,10 @@ trait MongoLeagueDayMapping extends MongoMapping {
 
   implicit def leagueDayToDocument(leagueDay: LeagueDay): Document =
     Document(
-      "_id"       -> leagueDay.leagueDayId.toBsonObjectId,
+      "_id"       -> leagueDay.leagueDayId.toBsonString,
       "beginDate" -> leagueDay.beginDate.toBsonDateTime,
       "endDate"   -> leagueDay.endDate.toBsonDateTime,
-      "games"     -> BsonArray(leagueDay.games.map(_.toDocument))
+      "games"     -> leagueDay.games.map(_.toDocument)
     )
 
   implicit val gameMongoConverter: MongoConverter[Game] = (mongoDocument: Document) =>
@@ -45,7 +45,7 @@ trait MongoLeagueDayMapping extends MongoMapping {
 
   implicit def documentToLeagueDay(document: Document): LeagueDay =
     LeagueDay(
-      LeagueDayId.unsafe(document.getId("_id")),
+      LeagueDayId.unsafe(document.getStr("_id")),
       document.getDate("beginDate"),
       document.getDate("endDate"),
       document.getValues[Game]("games")

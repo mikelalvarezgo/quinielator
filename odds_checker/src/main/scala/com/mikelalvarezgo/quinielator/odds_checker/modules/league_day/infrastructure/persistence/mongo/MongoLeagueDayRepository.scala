@@ -9,8 +9,9 @@ import com.mikelalvarezgo.quinielator.shared.domain.model.LeagueDayId
 import com.mikelalvarezgo.quinielator.shared.infrastructure.persistence.mongo.MongoConnection
 import com.mikelalvarezgo.quinielator.shared.infrastructure.utils.SyntaxUtils._
 
-final class MongoLeagueDayRepository(mongoConnection: MongoConnection)(implicit ec: ExecutionContext)
-    extends LeagueDayRepository[Future]
+final class MongoLeagueDayRepository(mongoConnection: MongoConnection)(
+  implicit ec: ExecutionContext
+) extends LeagueDayRepository[Future]
     with MongoLeagueDayMapping {
   val collectionName = "league_day"
   val collection     = mongoConnection.getCollection("league_day")
@@ -19,7 +20,10 @@ final class MongoLeagueDayRepository(mongoConnection: MongoConnection)(implicit 
     collection.insertOne(leagueDay).toFuture().map(_ => ())
 
   override def update(leagueDay: LeagueDay): Future[Unit] =
-    collection.findOneAndReplace(leagueDay.leagueDayId.toFilter, leagueDay).toFuture().map(_ => ())
+    collection
+      .findOneAndReplace(leagueDay.leagueDayId.toFilter, leagueDay)
+      .toFuture()
+      .map(_ => ())
 
   override def delete(id: LeagueDayId): Future[Unit] =
     collection.deleteOne(id.toFilter).toFuture().map(_ => ())

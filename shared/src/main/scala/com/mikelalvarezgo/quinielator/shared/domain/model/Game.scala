@@ -13,11 +13,13 @@ final case class Game(
   def isHomeVictory    = goalsHomeTeam > goalsVisitorTeam
   def isVisitorVictory = goalsVisitorTeam > goalsHomeTeam
   def isTied           = goalsVisitorTeam == goalsHomeTeam
-  def isForecastCorrect(forecasts: Seq[Forecast]) = forecasts.exists(forecast =>
-    forecast match {
-      case HomeWin    => isHomeVictory
-      case VisitorWin => isVisitorVictory
-      case Tie        => isTied
-    }
-  )
+  def isForecastCorrect(forecasts: Seq[Forecast]) =
+    forecasts.exists(
+      forecast =>
+        forecast match {
+          case HomeWin    => isHomeVictory
+          case VisitorWin => isVisitorVictory
+          case Tie        => isTied
+        }
+    )
 }
