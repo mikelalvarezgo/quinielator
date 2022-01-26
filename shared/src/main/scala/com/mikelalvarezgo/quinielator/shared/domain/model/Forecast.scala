@@ -14,10 +14,14 @@ object Forecast {
 
   def all: Set[Forecast] = sealerate.values[Forecast]
 
-  def unsafe(value: String): Forecast = ValidationErrorException.getOrThrow(fromString(value))
+  def unsafe(value: String): Forecast =
+    ValidationErrorException.getOrThrow(fromString(value))
 
   def fromString(value: String): Validation[Forecast] =
-    allByValue.get(value).map(Valid.apply).getOrElse(Invalid(InvalidForecast(value)).toValidatedNel)
+    allByValue
+      .get(value)
+      .map(Valid.apply)
+      .getOrElse(Invalid(InvalidForecast(value)).toValidatedNel)
 
 }
 

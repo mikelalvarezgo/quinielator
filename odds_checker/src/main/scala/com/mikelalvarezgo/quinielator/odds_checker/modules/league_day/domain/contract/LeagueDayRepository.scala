@@ -1,7 +1,8 @@
 package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.contract
 
 import cats.data.OptionT
-import com.mikelalvarezgo.quinielator.shared.domain.model.{LeagueDay, LeagueDayId}
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model.LeagueDay
+import com.mikelalvarezgo.quinielator.shared.domain.model.LeagueDayId
 
 trait LeagueDayRepository[P[_]] {
   def create(leagueDay: LeagueDay): P[Unit]

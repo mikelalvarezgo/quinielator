@@ -2,7 +2,12 @@ package com.mikelalvarezgo.quinielator.odds_checker.infrastructure.http.fooball_
 
 import com.typesafe.config.Config
 
-final case class FootballApiConfig(baseUri: String, apiKey: String, firstDivisionId: Int, secondDivisionId: Int)
+final case class FootballApiConfig(
+  baseUri: String,
+  apiKey: String,
+  firstDivisionId: Int,
+  secondDivisionId: Int
+)
 
 object FootballApiConfig {
   def fromConfig(config: Config) =

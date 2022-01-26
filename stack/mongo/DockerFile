@@ -14,7 +14,7 @@ RUN \
   apt-get update && \
   apt-get install -y mongodb-org && \
   rm -rf /var/lib/apt/lists/*
-  mongod use quinielator
+
 
 # Define mountable directories.
 VOLUME ["/data/db"]
