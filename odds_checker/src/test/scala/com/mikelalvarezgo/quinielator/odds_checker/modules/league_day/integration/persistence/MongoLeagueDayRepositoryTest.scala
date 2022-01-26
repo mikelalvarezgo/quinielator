@@ -1,4 +1,4 @@
-package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.integration
+package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.integration.persistence
 
 import cats.implicits._
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.persistence.mongo.MongoLeagueDayRepository

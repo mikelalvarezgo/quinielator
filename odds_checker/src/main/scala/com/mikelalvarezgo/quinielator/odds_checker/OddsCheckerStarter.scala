@@ -1,10 +1,10 @@
 package com.mikelalvarezgo.quinielator.odds_checker
 
-import com.mikelalvarezgo.quinielator.shared.infrastructure.logger.ScalaLoggingLogger
+import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.depedency_injection.OddsCheckerContext
 
 object OddsCheckerStarter extends App {
 
-  val logger = new ScalaLoggingLogger("odds-checker")
+  val oddsCheckerContext = new OddsCheckerContext()
 
-  logger.info("OddsChecker Started!")
+  oddsCheckerContext.logger.info("OddsChecker Started!")
 }
