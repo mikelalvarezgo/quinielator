@@ -1,6 +1,7 @@
 name: CI
 on:
-  [push, pull_request] ?
+  push
+  pull_request
 jobs:
   build:
     strategy:
@@ -31,4 +32,4 @@ jobs:
         if: ${{ matrix.jobtype == 2 }}
         shell: bash
         run: |
-          sbt "update ;compile"
+          sbt "update ; compile"
