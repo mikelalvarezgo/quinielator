@@ -11,9 +11,6 @@ jobs:
           - os: ubuntu-latest
             java: 17
             jobtype: 1
-          - os: ubuntu-latest
-            java: 17
-            jobtype: 2
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -23,13 +20,8 @@ jobs:
         with:
           distribution: temurin
           java-version: ${{ matrix.java }}
-      - name: ScalaFmt (1)
+      - name: Compile
         if: ${{ matrix.jobtype == 1 }}
         shell: bash
         run: |
-          sbt -v "scalafmtCheckAll"
-      - name: Compile
-        if: ${{ matrix.jobtype == 2 }}
-        shell: bash
-        run: |
-          sbt "update ; compile"
+          sbt "update; compile"
