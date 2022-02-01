@@ -3,22 +3,26 @@
 
 pipeline {
     agent any
-
     stages {
-
-        stage('Compile') {
+        stage('Prep') {
             steps {
-                echo "Compiling..."
-                sh "sbt compile"
+                echo "Compiling and checking style, format..."
+                sh "sbt prep"
             }
         }
 
-        stage('Test') {
+        stage('Behaviour Test') {
             steps {
-                echo "Testing..."
-                sh "sbt test"
+                echo "Behaviour Testing..."
+                sh "sbt tb"
             }
         }
+         stage('Integration and Acceptance Test') {
+                steps {
+                    echo "Integration and acceptance testing..."
+                    sh "sbt ti ; ta"
+                }
+            }
 
         stage('Package') {
             steps {

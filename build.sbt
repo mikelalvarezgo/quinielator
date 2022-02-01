@@ -28,3 +28,22 @@ lazy val odds_checker = project
     libraryDependencies ++= (Dependencies.commonDependencies)
   )
   .dependsOn(shared % "compile->compile;test->test")
+
+
+addCommandAlias("c", "compile")
+addCommandAlias("tc", "Test/compile")
+addCommandAlias("t", "test")
+addCommandAlias("to", "testOnly")
+addCommandAlias("tq", "testQuick")
+addCommandAlias("f", "scalafmt")
+addCommandAlias("ft", "scalafmtCheck")
+addCommandAlias("tf", "Test/scalafmt")
+addCommandAlias("tft", "Test/scalafmtCheck")
+addCommandAlias("s", "scalastyle")
+addCommandAlias("ts", "Test/scalastyle")
+addCommandAlias("dc", "dependencyCheck")
+
+addCommandAlias("ca", ";c;tc")
+addCommandAlias("sc", ";s;ts")
+addCommandAlias("fc", ";ft;tft")
+addCommandAlias("prep", ";ca;sc;fc;dc")
