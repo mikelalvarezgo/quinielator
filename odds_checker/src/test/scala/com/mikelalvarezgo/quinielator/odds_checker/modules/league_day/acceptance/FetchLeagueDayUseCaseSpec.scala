@@ -3,7 +3,7 @@ package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.acceptanc
 import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.OddsCheckerAcceptanceTestCase
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.stub.GetLeagueDayCommandStub
 
-final class GetLeagueDayUseCaseSpec extends OddsCheckerAcceptanceTestCase {
+final class FetchLeagueDayUseCaseSpec extends OddsCheckerAcceptanceTestCase {
 
   "GetLeagueDayUseCaseSpec" should {
     "fetch football api and store the data in mongodb" in runWithContext{ context =>

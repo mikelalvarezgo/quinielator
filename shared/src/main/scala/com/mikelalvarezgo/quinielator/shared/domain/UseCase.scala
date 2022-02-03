@@ -5,6 +5,9 @@ import com.mikelalvarezgo.quinielator.shared.domain.error.Validation.Validation
 trait Request {
   type Response
 }
+
+trait Query extends Request
+
 trait Command extends Request {
   override type Response = Unit
 }

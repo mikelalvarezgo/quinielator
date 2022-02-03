@@ -7,18 +7,18 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import cats.data.NonEmptyList
 import cats.data.Validated.Invalid
 import com.mikelalvarezgo.quinielator.odds_checker.infrastructure.OddsCheckerBehaviourTestCase
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.application.GetLeagueDayUseCase.GetLeagueDayCommand
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.InvalidRound
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.application.FetchLeagueDayUseCase.FetchLeagueDayCommand
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.validation.InvalidRound
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model.LeagueDay
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.api.LeagueDayResponse
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.stub.{GetLeagueDayCommandStub, LeagueDayResponseStub}
 import com.mikelalvarezgo.quinielator.shared.infrastructure.utils.SyntaxUtils._
 
-final class GetLeagueDayUseCaseTest extends OddsCheckerBehaviourTestCase {
+final class FetchLeagueDayUseCaseTest extends OddsCheckerBehaviourTestCase {
 
   "GetLeagueDayUse case" should{
     "should get the info from client and store in repository" in {
-      val command: GetLeagueDayCommand = GetLeagueDayCommandStub.create()
+      val command: FetchLeagueDayCommand = GetLeagueDayCommandStub.create()
       val response: LeagueDayResponse = LeagueDayResponseStub.create()
 
       when(oddsClient.fetchLeagueDay(command.round, command.year)).thenReturn(response.someT[Future])
@@ -29,7 +29,7 @@ final class GetLeagueDayUseCaseTest extends OddsCheckerBehaviourTestCase {
       result.toOption.get.futureValue shouldBe ()
     }
     "should return validation error if division is not valid" in {
-      val command: GetLeagueDayCommand = GetLeagueDayCommandStub.invalidRound()
+      val command: FetchLeagueDayCommand = GetLeagueDayCommandStub.invalidRound()
 
       val result =  getDayLeagueUseCase.execute(command)
       result.isValid shouldBe false
