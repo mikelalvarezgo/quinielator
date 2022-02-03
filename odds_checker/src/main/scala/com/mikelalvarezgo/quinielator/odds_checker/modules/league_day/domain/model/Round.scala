@@ -1,7 +1,7 @@
 package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model
 
 import cats.data.Validated.{Invalid, Valid}
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.InvalidRound
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.validation.InvalidRound
 import com.mikelalvarezgo.quinielator.shared.domain.error.Validation.Validation
 import com.mikelalvarezgo.quinielator.shared.domain.error.ValidationErrorException
 

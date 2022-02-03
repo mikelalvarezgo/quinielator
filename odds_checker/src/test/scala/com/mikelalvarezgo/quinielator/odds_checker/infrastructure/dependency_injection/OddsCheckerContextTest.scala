@@ -7,7 +7,7 @@ import com.typesafe.config.Config
 
 final class OddsCheckerContextTest(testConfig: Config) extends OddsCheckerContext with TestContext{
 
-  override val config: Config = testConfig
+  override lazy val config: Config = testConfig
   override val logger: Logger = DummyLogger
 
   override def closeResources(): Unit = ()
