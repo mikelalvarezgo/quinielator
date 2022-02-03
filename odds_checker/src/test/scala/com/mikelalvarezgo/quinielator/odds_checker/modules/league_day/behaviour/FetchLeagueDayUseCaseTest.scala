@@ -11,27 +11,27 @@ import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.applicatio
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.validation.InvalidRound
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model.LeagueDay
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.api.LeagueDayResponse
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.stub.{GetLeagueDayCommandStub, LeagueDayResponseStub}
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastructure.stub.{FetchLeagueDayCommandStub, LeagueDayResponseStub}
 import com.mikelalvarezgo.quinielator.shared.infrastructure.utils.SyntaxUtils._
 
 final class FetchLeagueDayUseCaseTest extends OddsCheckerBehaviourTestCase {
 
   "GetLeagueDayUse case" should{
     "should get the info from client and store in repository" in {
-      val command: FetchLeagueDayCommand = GetLeagueDayCommandStub.create()
+      val command: FetchLeagueDayCommand = FetchLeagueDayCommandStub.create()
       val response: LeagueDayResponse = LeagueDayResponseStub.create()
 
       when(oddsClient.fetchLeagueDay(command.round, command.year)).thenReturn(response.someT[Future])
       when(leagueDayRepository.create(any[LeagueDay])).thenReturn(().pure[Future])
 
-      val result =  getDayLeagueUseCase.execute(command)
+      val result =  fetchDayLeagueUseCase.execute(command)
       result.isValid shouldBe true
       result.toOption.get.futureValue shouldBe ()
     }
     "should return validation error if division is not valid" in {
-      val command: FetchLeagueDayCommand = GetLeagueDayCommandStub.invalidRound()
+      val command: FetchLeagueDayCommand = FetchLeagueDayCommandStub.invalidRound()
 
-      val result =  getDayLeagueUseCase.execute(command)
+      val result =  fetchDayLeagueUseCase.execute(command)
       result.isValid shouldBe false
       result shouldBe Invalid(NonEmptyList.one(InvalidRound(command.round)))
     }

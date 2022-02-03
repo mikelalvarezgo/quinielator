@@ -3,7 +3,7 @@ package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastru
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.application.FetchLeagueDayUseCase.FetchLeagueDayCommand
 import com.mikelalvarezgo.quinielator.shared.infrastructure.stub.primitive_types.IntStub
 
-object GetLeagueDayCommandStub {
+object FetchLeagueDayCommandStub {
 
   def create(
             year: Int = IntStub.between(2017, 2021),
