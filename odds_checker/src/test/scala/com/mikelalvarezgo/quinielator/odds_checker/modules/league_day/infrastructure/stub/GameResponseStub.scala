@@ -7,12 +7,19 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.stub.primitive_types
 object GameResponseStub {
 
   def create(
-              homeTeam: String = StringStub.random(10),
-              visitorTeam: String = StringStub.random(10),
-              homeTeamGoals: Int = IntStub.randomNaturalNumber,
-              visitorTeamGoals: Int = IntStub.randomNaturalNumber,
-              playedAt: Long = DateTimeStub.random.getMillis,
-              division: String = DivisionStub.random.value
-            ): GameResponse =
-    GameResponse(homeTeam, visitorTeam, playedAt, homeTeamGoals, visitorTeamGoals, division)
+    homeTeam: String = StringStub.random(10),
+    visitorTeam: String = StringStub.random(10),
+    homeTeamGoals: Int = IntStub.randomNaturalNumber,
+    visitorTeamGoals: Int = IntStub.randomNaturalNumber,
+    playedAt: Long = DateTimeStub.random.getMillis,
+    division: String = DivisionStub.random.value
+  ): GameResponse =
+    GameResponse(
+      homeTeam,
+      visitorTeam,
+      playedAt,
+      homeTeamGoals,
+      visitorTeamGoals,
+      division
+    )
 }

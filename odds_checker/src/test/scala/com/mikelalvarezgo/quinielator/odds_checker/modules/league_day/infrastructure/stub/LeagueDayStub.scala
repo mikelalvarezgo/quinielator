@@ -10,9 +10,9 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.stub.{GameStub, Leag
 object LeagueDayStub {
 
   def create(
-            id: LeagueDayId = LeagueDayIdStub.create(),
-            beginDate: DateTime = DateTimeStub.randomPast,
-            endDate: DateTime = DateTimeStub.randomFuture,
-            games: Seq[Game] = ListStub.gen()(GameStub.create())
-            ): LeagueDay = LeagueDay(id, beginDate, endDate, games)
+    id: LeagueDayId = LeagueDayIdStub.create(),
+    beginDate: DateTime = DateTimeStub.randomPast,
+    endDate: DateTime = DateTimeStub.randomFuture,
+    games: Seq[Game] = ListStub.gen()(GameStub.create())
+  ): LeagueDay = LeagueDay(id, beginDate, endDate, games)
 }

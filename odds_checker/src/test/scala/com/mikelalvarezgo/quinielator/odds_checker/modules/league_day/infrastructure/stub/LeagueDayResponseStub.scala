@@ -6,6 +6,6 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.stub.primitive_types
 object LeagueDayResponseStub {
 
   def create(
-            games: List[GameResponse] = ListStub.gen()(GameResponseStub.create())
-            ): LeagueDayResponse = LeagueDayResponse(games)
+    games: List[GameResponse] = ListStub.gen()(GameResponseStub.create())
+  ): LeagueDayResponse = LeagueDayResponse(games)
 }

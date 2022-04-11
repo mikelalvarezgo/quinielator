@@ -6,9 +6,9 @@ import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.infrastruc
 final class FetchLeagueDayUseCaseSpec extends OddsCheckerAcceptanceTestCase {
 
   "FetchLeagueDayUseCaseSpec" should {
-    "fetch football api and store the data in mongodb" in runWithContext{ context =>
+    "fetch football api and store the data in mongodb" in runWithContext { context =>
       val command = FetchLeagueDayCommandStub.create()
-      val result = context.leagueDayContext.fetchLeagueDayUseCase.execute(command)
+      val result  = context.leagueDayContext.fetchLeagueDayUseCase.execute(command)
       result.isValid shouldBe true
       result.getResult shouldBe ()
     }

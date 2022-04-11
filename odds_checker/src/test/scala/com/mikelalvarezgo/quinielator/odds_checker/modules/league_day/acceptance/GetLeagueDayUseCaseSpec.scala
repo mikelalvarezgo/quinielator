@@ -10,15 +10,17 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.stub.LeagueDayIdStub
 final class GetLeagueDayUseCaseSpec extends OddsCheckerAcceptanceTestCase {
 
   "GetLeagueDayUseCaseSpec" should {
-    "get the data in mongodb" in runWithContext{ context =>
+    "get the data in mongodb" in runWithContext { context =>
       import context.ec
       import context.leagueDayContext
       val leagueDayId: LeagueDayId = LeagueDayIdStub.create()
       val query: GetLeagueDayQuery = GetLeagueDayQueryStub.create(leagueDayId.raw)
-      val leagueDay: LeagueDay = LeagueDayStub.create(leagueDayId)
+      val leagueDay: LeagueDay     = LeagueDayStub.create(leagueDayId)
 
       val result =
-        leagueDayContext.repository.create(leagueDay).map(_ => leagueDayContext.getLeagueDayUseCase.execute(query))
+        leagueDayContext.repository
+          .create(leagueDay)
+          .map(_ => leagueDayContext.getLeagueDayUseCase.execute(query))
 
       result.futureValue.isValid shouldBe true
       result.futureValue.getResult shouldBe leagueDay

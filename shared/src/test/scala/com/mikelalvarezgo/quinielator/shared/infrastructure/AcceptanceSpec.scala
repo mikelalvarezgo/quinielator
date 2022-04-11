@@ -12,7 +12,7 @@ import scala.concurrent.duration._
 import scala.util.Try
 
 abstract class AcceptanceSpec[CurrentContext <: TestContext]
-  extends AnyWordSpec
+    extends AnyWordSpec
     with Matchers
     with ScalaFutures
     with OptionValues
@@ -38,7 +38,7 @@ abstract class AcceptanceSpec[CurrentContext <: TestContext]
 
   def runWithContext(testToExecute: Test): Assertion = {
     val testContext = context()
-    val result = Try(testToExecute(testContext))
+    val result      = Try(testToExecute(testContext))
     testContext.closeResources()
     result.get
   }

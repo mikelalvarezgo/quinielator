@@ -7,5 +7,8 @@ object MongoEnvironmentManager {
   val mongoClient: MongoClient =
     MongoClient("mongodb://127.0.0.1:27017")
   val mongoCollectionHelpers: Seq[MongoCollectionHelper] =
-    Seq(new LeagueDayCollectionHelper(mongoClient))
+    Seq(
+      new LeagueDayCollectionHelper(mongoClient),
+      new CalendarCollectionHelper(mongoClient)
+    )
 }
