@@ -15,4 +15,3 @@ object DummyLogger extends Logger {
   def debug(msg: String, params: Map[String, Any]): Unit   = ()
   def debug(msg: String, throwable: Throwable): Unit       = ()
 }
-

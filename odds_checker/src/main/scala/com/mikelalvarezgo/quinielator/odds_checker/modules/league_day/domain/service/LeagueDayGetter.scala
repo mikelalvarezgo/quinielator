@@ -1,7 +1,7 @@
 package com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.service
 
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.contract.LeagueDayRepository
-import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.validation.LeagueDayNotFound
+import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.error.LeagueDayNotFound
 import com.mikelalvarezgo.quinielator.odds_checker.modules.league_day.domain.model.LeagueDay
 import com.mikelalvarezgo.quinielator.shared.domain.model.LeagueDayId
 import com.mikelalvarezgo.quinielator.shared.utils.ThrowableTypeClasses.MError

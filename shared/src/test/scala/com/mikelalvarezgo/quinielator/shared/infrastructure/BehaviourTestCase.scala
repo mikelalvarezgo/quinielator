@@ -10,7 +10,7 @@ import org.scalatest.wordspec.AnyWordSpec
 import com.mikelalvarezgo.quinielator.shared.domain.error.Validation.ValidationFutureT
 
 abstract class BehaviourTestCase
-  extends AnyWordSpec
+    extends AnyWordSpec
     with OptionValues
     with ScalaFutures
     with GivenWhenThen

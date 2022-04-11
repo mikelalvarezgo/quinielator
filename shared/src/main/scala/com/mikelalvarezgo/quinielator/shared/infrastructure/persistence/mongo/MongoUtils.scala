@@ -15,6 +15,13 @@ object MongoUtils {
   implicit class MongoDocumentOps(value: Document) {
     def getOptString(key: String): Option[String] =
       value.get[BsonString](key).map(_.getValue)
+    def getListString(key: String): Seq[String] =
+      getValue(
+        value
+          .get[BsonArray](key)
+          .map(_.getValues.asScala.toList.map(_.asString().getValue)),
+        key
+      )
     def getStr(key: String): String         = getValue(getOptString(key), key)
     def getOptInt(key: String): Option[Int] = value.get[BsonInt32](key).map(_.getValue)
     def getInt(key: String): Int            = getValue(getOptInt(key), key)

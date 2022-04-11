@@ -4,6 +4,8 @@ import scala.util.Random
 
 object ListStub {
 
-  def gen[T](numberOfElements: Int = Random.nextInt(100) + 1)(elementCreator: => T): List[T] =
+  def gen[T](
+    numberOfElements: Int = Random.nextInt(100) + 1
+  )(elementCreator: => T): List[T] =
     (1 to numberOfElements).map(_ => elementCreator).toList
 }

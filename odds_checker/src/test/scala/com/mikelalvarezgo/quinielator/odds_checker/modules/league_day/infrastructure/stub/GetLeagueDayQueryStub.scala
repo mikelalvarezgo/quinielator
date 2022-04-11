@@ -6,11 +6,10 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.stub.primitive_types
 
 object GetLeagueDayQueryStub {
 
-  def create(id: String = LeagueDayIdStub.create().raw,
-            ): GetLeagueDayQuery = GetLeagueDayQuery(id)
+  def create(id: String = LeagueDayIdStub.create().raw): GetLeagueDayQuery =
+    GetLeagueDayQuery(id)
 
-
-  def invalid(id: String = StringStub.random(10),
-            ): GetLeagueDayQuery = GetLeagueDayQuery(id)
+  def invalid(id: String = StringStub.random(10)): GetLeagueDayQuery =
+    GetLeagueDayQuery(id)
 
 }

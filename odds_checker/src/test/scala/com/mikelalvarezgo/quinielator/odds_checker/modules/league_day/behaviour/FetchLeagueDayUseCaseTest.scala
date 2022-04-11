@@ -16,22 +16,23 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.utils.SyntaxUtils._
 
 final class FetchLeagueDayUseCaseTest extends OddsCheckerBehaviourTestCase {
 
-  "GetLeagueDayUse case" should{
-    "should get the info from client and store in repository" in {
+  "GetLeagueDayUse case" should {
+    "get the info from client and store in repository" in {
       val command: FetchLeagueDayCommand = FetchLeagueDayCommandStub.create()
-      val response: LeagueDayResponse = LeagueDayResponseStub.create()
+      val response: LeagueDayResponse    = LeagueDayResponseStub.create()
 
-      when(oddsClient.fetchLeagueDay(command.round, command.year)).thenReturn(response.someT[Future])
+      when(oddsClient.fetchLeagueDay(command.round, command.year))
+        .thenReturn(response.someT[Future])
       when(leagueDayRepository.create(any[LeagueDay])).thenReturn(().pure[Future])
 
-      val result =  fetchDayLeagueUseCase.execute(command)
+      val result = fetchDayLeagueUseCase.execute(command)
       result.isValid shouldBe true
       result.toOption.get.futureValue shouldBe ()
     }
-    "should return validation error if division is not valid" in {
+    "return validation error if division is not valid" in {
       val command: FetchLeagueDayCommand = FetchLeagueDayCommandStub.invalidRound()
 
-      val result =  fetchDayLeagueUseCase.execute(command)
+      val result = fetchDayLeagueUseCase.execute(command)
       result.isValid shouldBe false
       result shouldBe Invalid(NonEmptyList.one(InvalidRound(command.round)))
     }

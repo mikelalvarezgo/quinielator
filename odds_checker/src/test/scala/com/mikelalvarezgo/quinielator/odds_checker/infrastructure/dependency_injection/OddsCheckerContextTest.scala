@@ -5,10 +5,12 @@ import com.mikelalvarezgo.quinielator.shared.domain.contract.Logger
 import com.mikelalvarezgo.quinielator.shared.infrastructure.{DummyLogger, TestContext}
 import com.typesafe.config.Config
 
-final class OddsCheckerContextTest(testConfig: Config) extends OddsCheckerContext with TestContext{
+final class OddsCheckerContextTest(testConfig: Config)
+    extends OddsCheckerContext
+    with TestContext {
 
   override lazy val config: Config = testConfig
-  override val logger: Logger = DummyLogger
+  override val logger: Logger      = DummyLogger
 
   override def closeResources(): Unit = ()
 

@@ -13,16 +13,19 @@ import com.mikelalvarezgo.quinielator.shared.infrastructure.persistence.mongo.{M
 import com.typesafe.config.ConfigFactory
 
 abstract class IntegrationTestCase
-  extends AnyWordSpecLike
+    extends AnyWordSpecLike
     with Matchers
     with OptionValues
     with ScalaFutures
     with Eventually
     with EitherValues {
-  implicit override val patienceConfig: PatienceConfig = PatienceConfig(timeout = 60.seconds, interval = 500.millis)
+  implicit override val patienceConfig: PatienceConfig =
+    PatienceConfig(timeout = 60.seconds, interval = 500.millis)
   val config = ConfigFactory.defaultApplication()
 
-  val mongoConnection = new MongoConnection(MongoConfig("localhost", 27017, "mikel", "test"))
+  val mongoConnection = new MongoConnection(
+    MongoConfig("localhost", 27017, "mikel", "test")
+  )
   implicit val system: ActorSystem          = ActorSystem()
   implicit val ec: ExecutionContextExecutor = system.dispatcher
   implicit val logger: Logger               = DummyLogger
